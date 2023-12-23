@@ -47,7 +47,9 @@ export default {
     }
     console.log(...request.headers)
     const response = await fetch(url, {
-      headers: {
+      // headers: request.headers, // all
+      headers: { //custom
+        "x-real-ip": String(request.headers.get('x-real-ip'),
         "user-agent": String(request.headers.get('user-agent')) + " | IP: " + String(request.headers.get('x-real-ip')) ,
       }
     });
